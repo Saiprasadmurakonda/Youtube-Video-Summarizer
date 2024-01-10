@@ -3,15 +3,12 @@
     "name": "YouTube Summarizer",
     "version": "1.0",
     "description": "Summarize YouTube video transcripts",
-    "permissions": ["activeTab", "http://localhost:5000/*"],
+    "host_permissions": [ "https://127.0.0.1:5000/*"],
     "action": {
       "default_icon": "logo.png",
       "default_popup": "popup.html"
     },
-    "background": {
-      "background.service_worker": ["background.js"],
-      "persistent": false
-    },
+  
     "content_scripts": [
       {
         "matches": ["*://www.youtube.com/*"],

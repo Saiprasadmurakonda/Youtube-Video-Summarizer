@@ -8,6 +8,7 @@ app = Flask(__name__)
 def receive_url(url):
     data = request.get_json()
     url = data.get('url')
+    print(url)
     # url=url[]
     a=YouTubeTranscriptApi.get_transcript(url)
     c=""
