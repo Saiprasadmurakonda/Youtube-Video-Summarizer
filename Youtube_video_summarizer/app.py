@@ -30,6 +30,5 @@ def receive_url(url):
     print(response)
     summary = response.choices[0].text
     return summary
-
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Summarizer",
+    "version": "1.0",
+    "description": "Summarize YouTube video transcripts",
+    "host_permissions": [ "tabs","<all_urls>"],
+    "action": {
+      "default_icon": "logo.png",
+      "default_popup": "popup.html"
+    },
+  "background":{
+    "scripts":["background.js"]
+  },
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
