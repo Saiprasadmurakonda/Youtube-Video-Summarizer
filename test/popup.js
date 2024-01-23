@@ -26,12 +26,12 @@ chrome.runtime.onMessage.addListener(
   );
 
 
-  chrome.runtime.onMessage.addListener(async function (request, sender, sendResponse) {
+  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.message === "video_url") {
       var videoUrl = request.url;
   
       // Send the URL to the Flask server
-      await fetch('http://127.0.0.1:5000/receive_url', {
+       fetch('http://127.0.0.1:5000/receive_url', {
         method: 'POST',
   
         // changes accept and mode into single quotes. before its not there
@@ -47,12 +47,16 @@ chrome.runtime.onMessage.addListener(
         .then( async data => {
             console.log('Server response:', data);})
 
-            const url = 'http://127.0.0.1:5000/receive_url';
-
-            fetch(url)
-              .then(response => response.json()) // or response.text() depending on your data format
-              .then(data => console.log(data))
-              .catch(error => console.error('Error:', error));
-
+        let getResult= fetch('http://127.0.0.1:5000/receive_url', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'accept': 'application/json',
+            'mode': 'cors',
+            'User-agent': 'learning app',
+        }
+      })
+    let getdata=getResult;
+    console.log(getdata.result);
     }
   });

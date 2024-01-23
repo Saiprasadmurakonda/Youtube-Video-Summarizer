@@ -34,7 +34,7 @@ def receive_url():
             # print(c)
 
             # Set your OpenAI API key
-            openai.api_key = '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'
+            openai.api_key = 'abcsd'
             language = "English"
 
             def prompt(language, text, num_words):
