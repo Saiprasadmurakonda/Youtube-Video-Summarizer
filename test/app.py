@@ -2,21 +2,15 @@ import flask
 from youtube_transcript_api import YouTubeTranscriptApi
 import openai
 from flask import Flask,render_template, request,jsonify
-# app.pyfrom flask_cors import CORS  # Import the CORS extension
-from flask_cors import CORS  # Import the CORS extension
+from flask_cors import CORS 
 
 app = Flask(__name__)
 CORS(app) 
 app.jinja_env.auto_reload=True
 result_data=None
-# csp_header = "script-src 'self' https://code.jquery.com;"
-# csp_header = "script-src 'self';"
 @app.route('/receive_url', methods=['POST','GET'])
 def receive_url():
-        # response = flask.jsonify({'some': 'data'})
 
-        # response.headers.add('Access-Control-Allow-Origin', '*')
-        # # return response
         global result_data
         if request.method=='POST':
             data = request.get_json()
@@ -31,14 +25,13 @@ def receive_url():
             for i in range(len(a)):
                 b = a[i]
                 c = c + b['text'] + " "
-            # print(c)
 
             # Set your OpenAI API key
-            openai.api_key = 'abcsd'
+            openai.api_key = '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'
             language = "English"
 
             def prompt(language, text, num_words):
-                return "please summarize this text in 250 words in 5 bullet points" + text
+                return "please summarize this text in 250 words" + text
 
             response = openai.Completion.create(
                 model="gpt-3.5-turbo-instruct",
@@ -46,11 +39,8 @@ def receive_url():
                 max_tokens=250,
             )
 
-            # print(response)
             message = response.choices[0].text
 
-
-            # print(message)
             result_data={'result':message}
             return jsonify({'message':"Result stored successfully"})
         elif request.method=='GET':
@@ -59,16 +49,6 @@ def receive_url():
              else:
                   return jsonify({'message':'No result available'})
 
-
-        # return render_template('popup.html', message=message)
-
-        # return message
-
-
-# @app.after_request
-# def add_csp(response):
-#     response.headers['Content-Security-Policy'] = csp_header
-#     return response
 @app.route('/summary')
 def summary():
     message = request.args.get('message', '')

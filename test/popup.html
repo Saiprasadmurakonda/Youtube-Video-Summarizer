@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Popup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="temporaryContent" >
+    <p> Hello there... </p>
+    <p>Your Video is getting summarized...</p><br>
+    </div>
+    <div id="delayedContent" style="display: none;">
+    <p>YOUR SUMMARY IS READY</p>
+    <a href="http://127.0.0.1:5000/receive_url" target="_blank">Click here to View</a>
+    </div>    
+    <script src="/popup.js"></script>
+    <script src="/background.js"></script>
+    <script src="/content.js"></script>
+    <script src="/index.js"></script>
+</body>
+</html>

@@ -16,7 +16,7 @@
       "ids": ["*"]
   },
   "action": {
-    "default_popup": "templates/popup.html",
+    "default_popup": "popup.html",
     "default_icon": {
     "128": "images/icon128.png"
     }
